@@ -10,6 +10,12 @@
 
 @interface EditController ()
 
+@property (strong, nonatomic) IBOutlet NSObject *firstName;
+@property (weak, nonatomic) IBOutlet UITextField *lastName;
+@property (weak, nonatomic) IBOutlet UITextField *birthday;
+@property (weak, nonatomic) IBOutlet UITextField *phone;
+@property (weak, nonatomic) IBOutlet UITextField *email;
+
 @end
 
 @implementation EditController
