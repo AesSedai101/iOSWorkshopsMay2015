@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Contact.h"
 
 @interface ViewController : UIViewController
-
-
+@property Contact* contact;
 @end
 

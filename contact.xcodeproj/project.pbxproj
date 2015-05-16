@@ -21,6 +21,7 @@
 		108773CA1AEA6B0C003E16A5 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 108773C91AEA6B0C003E16A5 /* Contact.m */; };
 		108773CB1AEA6B0C003E16A5 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 108773C91AEA6B0C003E16A5 /* Contact.m */; };
 		108773CD1AEA708B003E16A5 /* ContactTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 108773CC1AEA708B003E16A5 /* ContactTestCase.m */; };
+		13140BC31B077F910066DCCC /* ContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13140BC21B077F910066DCCC /* ContactsTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,8 @@
 		108773C81AEA6B0C003E16A5 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
 		108773C91AEA6B0C003E16A5 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
 		108773CC1AEA708B003E16A5 /* ContactTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactTestCase.m; sourceTree = "<group>"; };
+		13140BC11B077F910066DCCC /* ContactsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsTableViewController.h; sourceTree = "<group>"; };
+		13140BC21B077F910066DCCC /* ContactsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +124,8 @@
 				108773A21AEA696A003E16A5 /* Supporting Files */,
 				1003345D1B00F92500C2C410 /* EditController.h */,
 				1003345E1B00F92500C2C410 /* EditController.m */,
+				13140BC11B077F910066DCCC /* ContactsTableViewController.h */,
+				13140BC21B077F910066DCCC /* ContactsTableViewController.m */,
 			);
 			path = contact;
 			sourceTree = "<group>";
@@ -255,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				108773CA1AEA6B0C003E16A5 /* Contact.m in Sources */,
+				13140BC31B077F910066DCCC /* ContactsTableViewController.m in Sources */,
 				1003345F1B00F92500C2C410 /* EditController.m in Sources */,
 				108773AB1AEA696A003E16A5 /* ViewController.m in Sources */,
 				108773A81AEA696A003E16A5 /* AppDelegate.m in Sources */,

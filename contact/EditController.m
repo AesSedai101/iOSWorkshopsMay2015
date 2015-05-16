@@ -9,12 +9,11 @@
 #import "EditController.h"
 
 @interface EditController ()
-
-@property (strong, nonatomic) IBOutlet NSObject *firstName;
-@property (weak, nonatomic) IBOutlet UITextField *lastName;
-@property (weak, nonatomic) IBOutlet UITextField *birthday;
-@property (weak, nonatomic) IBOutlet UITextField *phone;
-@property (weak, nonatomic) IBOutlet UITextField *email;
+@property (weak, nonatomic) IBOutlet UITextField *editFirstName;
+@property (weak, nonatomic) IBOutlet UITextField *editLastName;
+@property (weak, nonatomic) IBOutlet UITextField *editDateOfBirth;
+@property (weak, nonatomic) IBOutlet UITextField *editPhone;
+@property (weak, nonatomic) IBOutlet UITextField *editEmail;
 
 @end
 
@@ -23,6 +22,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    NSDateFormatter* format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"dd LLLL yyyy"];
+    
+    self.editFirstName.text = self.contact.firstName;
+    self.editLastName.text = self.contact.lastName;
+    self.editDateOfBirth.text = [format stringFromDate:self.contact.birthDate];
+    self.editPhone.text = self.contact.phoneNumber;
+    self.editEmail.text = self.contact.email;
 }
 
 - (void)didReceiveMemoryWarning {

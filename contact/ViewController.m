@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "EditController.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *fullName;
@@ -20,12 +21,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    NSDateFormatter* format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"dd LLLL yyyy"];
+    
+    self.fullName.text = self.contact.fullName;
+    self.dateOfBirth.text = [format stringFromDate:self.contact.birthDate];
+    self.phone.text = self.contact.phoneNumber;
+    self.email.text = self.contact.email;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    EditController* controller = [segue destinationViewController];
+    controller.contact = self.contact;
 }
 
 @end

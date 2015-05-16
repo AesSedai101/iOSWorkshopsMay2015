@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Contact.h"
 
 @interface EditController : UIViewController
-
+@property Contact* contact;
 @end
