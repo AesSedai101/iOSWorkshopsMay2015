@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		1003345F1B00F92500C2C410 /* EditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1003345E1B00F92500C2C410 /* EditController.m */; };
+		100CB9C91B0A0F110018FABB /* Contact+ContactInitialiserAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 10638F9C1AF1101F00E4AC93 /* Contact+ContactInitialiserAdditions.m */; };
+		100CB9CA1B0A0F150018FABB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 108773A71AEA696A003E16A5 /* AppDelegate.m */; };
+		100CB9CB1B0A0F1A0018FABB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 108773AA1AEA696A003E16A5 /* ViewController.m */; };
+		100CB9CC1B0A0F1F0018FABB /* EditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1003345E1B00F92500C2C410 /* EditController.m */; };
+		100CB9CD1B0A0F240018FABB /* ContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13140BC21B077F910066DCCC /* ContactsTableViewController.m */; };
 		10638F9A1AF1096C00E4AC93 /* ContactChangeDelegateTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 10638F991AF1096C00E4AC93 /* ContactChangeDelegateTestCase.m */; };
 		10638F9D1AF1101F00E4AC93 /* Contact+ContactInitialiserAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 10638F9C1AF1101F00E4AC93 /* Contact+ContactInitialiserAdditions.m */; };
 		10638F9F1AF1129600E4AC93 /* ContactInitialiserAdditionsTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 10638F9E1AF1129600E4AC93 /* ContactInitialiserAdditionsTestCase.m */; };
@@ -273,6 +278,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				100CB9CD1B0A0F240018FABB /* ContactsTableViewController.m in Sources */,
+				100CB9CC1B0A0F1F0018FABB /* EditController.m in Sources */,
+				100CB9CB1B0A0F1A0018FABB /* ViewController.m in Sources */,
+				100CB9CA1B0A0F150018FABB /* AppDelegate.m in Sources */,
+				100CB9C91B0A0F110018FABB /* Contact+ContactInitialiserAdditions.m in Sources */,
 				10638F9F1AF1129600E4AC93 /* ContactInitialiserAdditionsTestCase.m in Sources */,
 				108773CB1AEA6B0C003E16A5 /* Contact.m in Sources */,
 				108773BF1AEA696A003E16A5 /* contactTests.m in Sources */,
