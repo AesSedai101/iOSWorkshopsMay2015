@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "Contact.h"
+#import "ContactChangeDelegate.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <ContactChangeDelegate>
 @property Contact* contact;
+@property (weak, nonatomic) id <ContactChangeDelegate> delegate;
 @end
 

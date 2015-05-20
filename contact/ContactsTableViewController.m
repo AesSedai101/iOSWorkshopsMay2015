@@ -64,9 +64,9 @@
     return self.alphabet;
 }
 
-/*- (NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+- (NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return [self.alphabet objectAtIndex:section];
-}*/
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSInteger count = 0;
@@ -92,7 +92,6 @@
     Contact * thisContact = [self.contacts objectAtIndex:calcIndex];
     NSLog(@"Contact %ld in section %@: %@", (long)indexPath.row, [self.alphabet objectAtIndex:indexPath.section], thisContact.fullName);
     cell.textLabel.text = thisContact.fullName;
-    cell.detailTextLabel.text = thisContact.phoneNumber;
     
     return cell;
 }
@@ -123,7 +122,11 @@
     
     ViewController* controller = [segue destinationViewController];
     controller.contact = selected;
+    controller.delegate = self;
 }
 
+- (void)contactChanged {
+    [self.tableView reloadData];
+}
 
 @end

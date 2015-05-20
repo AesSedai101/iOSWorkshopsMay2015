@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ContactChangeDelegate.h"
 
-@interface ContactsTableViewController : UITableViewController
+@interface ContactsTableViewController : UITableViewController <ContactChangeDelegate>
 
 @end

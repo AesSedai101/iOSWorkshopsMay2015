@@ -21,7 +21,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self updateUI];
+}
+
+- (void) updateUI {
     NSDateFormatter* format = [[NSDateFormatter alloc] init];
     [format setDateFormat:@"dd LLLL yyyy"];
     
@@ -39,6 +42,12 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     EditController* controller = [segue destinationViewController];
     controller.contact = self.contact;
+    controller.delegate = self;
+}
+
+- (void)contactChanged {
+    [self updateUI];
+    [self.delegate contactChanged];
 }
 
 @end

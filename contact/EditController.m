@@ -9,6 +9,7 @@
 #import "EditController.h"
 
 @interface EditController ()
+
 @property (weak, nonatomic) IBOutlet UITextField *editFirstName;
 @property (weak, nonatomic) IBOutlet UITextField *editLastName;
 @property (weak, nonatomic) IBOutlet UITextField *editDateOfBirth;
@@ -21,6 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
     NSDateFormatter* format = [[NSDateFormatter alloc] init];
     [format setDateFormat:@"dd LLLL yyyy"];
@@ -37,14 +39,33 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)onFirstNameChange:(UITextField *)sender {
+    self.contact.firstName = sender.text;
+    [self.delegate contactChanged];
 }
-*/
+
+- (IBAction)onLastNameChange:(UITextField *)sender {
+    self.contact.lastName = sender.text;
+    [self.delegate contactChanged];
+}
+
+- (IBAction)onDoBChange:(UITextField *)sender {
+    NSString* dateString = sender.text;
+    NSDateFormatter* format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"dd LLLL yyyy"];
+    NSDate* date = [format dateFromString:dateString];
+    self.contact.birthDate = date;
+    [self.delegate contactChanged];
+}
+
+- (IBAction)onPhoneChange:(UITextField *)sender {
+    self.contact.phoneNumber = sender.text;
+    [self.delegate contactChanged];
+}
+
+- (IBAction)onEmailChange:(UITextField *)sender {
+    self.contact.email = sender.text;
+    [self.delegate contactChanged];
+}
 
 @end

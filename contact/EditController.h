@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Contact.h"
+#import "ContactChangeDelegate.h"
 
 @interface EditController : UIViewController
 @property Contact* contact;
+@property (weak, nonatomic) id <ContactChangeDelegate> delegate;
 @end
