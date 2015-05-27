@@ -26,14 +26,4 @@
     [super tearDown];
 }
 
-- (void)testDictionaryInit {
-    NSDictionary* vals = @{@"firstName":@"Steve",@"lastName":@"Woz",@"email":@"a@b.c",@"phone":@"012 345 6789",@"birth":@"1 Jan 1970"};
-    Contact* contact = [[Contact alloc] initFromDictionary:vals];
-    XCTAssertEqualObjects(@"Steve Woz", contact.fullName);
-    XCTAssertEqualObjects(@"a@b.c", contact.email);
-    XCTAssertEqualObjects(@"012 345 6789", contact.phoneNumber);
-    //XCTAssertTrue(contact.birthDate.timeIntervalSince1970 == 0);
-}
-
-
 @end

@@ -26,12 +26,6 @@
     [super tearDown];
 }
 
-- (void)testFullNameConstruction {
-    Contact* contact = [Contact contactWithFirstName:@"first" andLastName:@"last"];
-    NSString* fullName = contact.fullName;
-    XCTAssertEqualObjects(fullName, @"first last");
-}
-
 - (void)testEmptyFirstName {
     Contact* contact = [[Contact alloc] init];
     NSString* firstName = @"";
@@ -106,7 +100,9 @@
 
 -(void) testDescription {
     // just to show it
-    Contact* contact = [Contact contactWithFirstName:@"First" andLastName:@"Last"];
+    Contact* contact = [[Contact alloc] init];
+    contact.firstName = @"First";
+    contact.lastName = @"Last";
     contact.birthDate = [NSDate dateWithTimeIntervalSince1970:20000];
     contact.email = @"test@mail.com";
     contact.phoneNumber = @"012 345 6789";

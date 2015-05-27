@@ -9,6 +9,7 @@
 #import "ContactsTableViewController.h"
 #import "Contact+Additions.h"
 #import "ViewController.h"
+#import "AppDelegate.h"
 
 @interface ContactsTableViewController ()
 @property NSMutableArray* contacts;
@@ -22,19 +23,18 @@
     
     self.alphabet = @[@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"I",@"J",@"K",@"L",@"M",@"N",@"O",@"P",@"Q",@"R",@"S",@"T",@"U",@"V",@"W",@"X",@"Y",@"Z"];
     
-    NSDictionary* steveVals = @{@"firstName":@"Steve",@"lastName":@"Woz",@"email":@"a@b.c",@"phone":@"012 345 6789",@"birth":@"1 Jan 1970"};
-    Contact* steve = [[Contact alloc] initFromDictionary:steveVals];
+    AppDelegate *app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     
-    NSDictionary* randVals = @{@"firstName":@"Rand",@"lastName":@"al'Thor",@"email":@"a@b.c",@"phone":@"012 333 6789",@"birth":@"1 Jun 1982"};
-    Contact * rand = [[Contact alloc] initFromDictionary:randVals];
+    NSEntityDescription* descr = @"Contact";
+    Contact* zippy = [[Contact alloc] initWithEntity:descr insertIntoManagedObjectContext:[app managedObjectContext]];
+                      
+    zippy.firstName = @"Zippy";
+    zippy.lastName = @"Z";
+    zippy.email = @"zippy@z.z.";
+    zippy.phoneNumber = @"012 345 6789";
+    zippy.birthDate = [[NSDate alloc] initWithTimeIntervalSince1970:50000];
     
-    NSDictionary* zippyVals = @{@"firstName":@"Zippy",@"lastName":@"Z",@"email":@"Z@z.z",@"phone":@"012 345 7777",@"birth":@"13 Jun 1992"};
-    Contact * zippy = [[Contact alloc] initFromDictionary:zippyVals];
-    
-    NSDictionary* bobVals = @{@"firstName":@"Bob",@"lastName":@"Woz",@"email":@"a@b.c",@"phone":@"012 345 9999",@"birth":@"1 Jul 1985"};
-    Contact* bob = [[Contact alloc] initFromDictionary:bobVals];
-    
-    self.contacts = [NSMutableArray arrayWithArray: @[steve, rand, zippy, bob]];
+    self.contacts = [NSMutableArray arrayWithArray: @[zippy]];
     
     [self.contacts sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
         Contact* c1 = obj1;

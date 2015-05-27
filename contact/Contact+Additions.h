@@ -10,7 +10,4 @@
 
 @interface Contact (Additions)
 @property (readonly) NSString* fullName;
-
-- (id)initFromDictionary:(NSDictionary*)dictionary;
-+ (id)contactWithFirstName:(NSString*) firstName andLastName:(NSString*) lastName;
 @end
