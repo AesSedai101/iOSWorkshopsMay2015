@@ -20,6 +20,7 @@
 		13C02D621B163AA200FAC191 /* ContactInitialiserAdditionsTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 13C02D611B163AA200FAC191 /* ContactInitialiserAdditionsTestCase.m */; };
 		13C02D641B163AA800FAC191 /* ContactTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 13C02D631B163AA800FAC191 /* ContactTestCase.m */; };
 		13C02D671B163ADE00FAC191 /* Contact+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 13C02D661B163ADE00FAC191 /* Contact+Additions.m */; };
+		13C02D6A1B163B8E00FAC191 /* ContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13C02D691B163B8E00FAC191 /* ContactsTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,8 @@
 		13C02D631B163AA800FAC191 /* ContactTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactTestCase.m; sourceTree = "<group>"; };
 		13C02D651B163ADE00FAC191 /* Contact+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Contact+Additions.h"; sourceTree = "<group>"; };
 		13C02D661B163ADE00FAC191 /* Contact+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Contact+Additions.m"; sourceTree = "<group>"; };
+		13C02D681B163B8E00FAC191 /* ContactsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsTableViewController.h; sourceTree = "<group>"; };
+		13C02D691B163B8E00FAC191 /* ContactsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +116,8 @@
 				13C02D381B16352900FAC191 /* LaunchScreen.xib */,
 				13C02D2D1B16352900FAC191 /* contact.xcdatamodeld */,
 				13C02D261B16352900FAC191 /* Supporting Files */,
+				13C02D681B163B8E00FAC191 /* ContactsTableViewController.h */,
+				13C02D691B163B8E00FAC191 /* ContactsTableViewController.m */,
 			);
 			path = contact;
 			sourceTree = "<group>";
@@ -263,6 +268,7 @@
 				13C02D5C1B16381B00FAC191 /* Contact+Validation.m in Sources */,
 				13C02D321B16352900FAC191 /* ViewController.m in Sources */,
 				13C02D291B16352900FAC191 /* main.m in Sources */,
+				13C02D6A1B163B8E00FAC191 /* ContactsTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
