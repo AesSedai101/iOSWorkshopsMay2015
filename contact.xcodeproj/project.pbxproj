@@ -14,13 +14,13 @@
 		13C02D371B16352900FAC191 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13C02D361B16352900FAC191 /* Images.xcassets */; };
 		13C02D3A1B16352900FAC191 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13C02D381B16352900FAC191 /* LaunchScreen.xib */; };
 		13C02D521B1636E500FAC191 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13C02D511B1636E500FAC191 /* Main.storyboard */; };
-		13C02D581B1637BD00FAC191 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 13C02D571B1637BD00FAC191 /* Contact.m */; };
 		13C02D5C1B16381B00FAC191 /* Contact+Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = 13C02D5B1B16381B00FAC191 /* Contact+Validation.m */; };
 		13C02D601B1639D000FAC191 /* EditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13C02D5F1B1639D000FAC191 /* EditController.m */; };
 		13C02D621B163AA200FAC191 /* ContactInitialiserAdditionsTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 13C02D611B163AA200FAC191 /* ContactInitialiserAdditionsTestCase.m */; };
 		13C02D641B163AA800FAC191 /* ContactTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 13C02D631B163AA800FAC191 /* ContactTestCase.m */; };
 		13C02D671B163ADE00FAC191 /* Contact+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 13C02D661B163ADE00FAC191 /* Contact+Additions.m */; };
 		13C02D6A1B163B8E00FAC191 /* ContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13C02D691B163B8E00FAC191 /* ContactsTableViewController.m */; };
+		13C02D6D1B163DF100FAC191 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 13C02D6C1B163DF100FAC191 /* Contact.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,8 +47,6 @@
 		13C02D3F1B16352A00FAC191 /* contactTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = contactTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		13C02D441B16352A00FAC191 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13C02D511B1636E500FAC191 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		13C02D561B1637BD00FAC191 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
-		13C02D571B1637BD00FAC191 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
 		13C02D5A1B16381B00FAC191 /* Contact+Validation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Contact+Validation.h"; sourceTree = "<group>"; };
 		13C02D5B1B16381B00FAC191 /* Contact+Validation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Contact+Validation.m"; sourceTree = "<group>"; };
 		13C02D5D1B1638B300FAC191 /* ContactChangeDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactChangeDelegate.h; sourceTree = "<group>"; };
@@ -60,6 +58,8 @@
 		13C02D661B163ADE00FAC191 /* Contact+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Contact+Additions.m"; sourceTree = "<group>"; };
 		13C02D681B163B8E00FAC191 /* ContactsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsTableViewController.h; sourceTree = "<group>"; };
 		13C02D691B163B8E00FAC191 /* ContactsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsTableViewController.m; sourceTree = "<group>"; };
+		13C02D6B1B163DF100FAC191 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
+		13C02D6C1B163DF100FAC191 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,10 +101,10 @@
 		13C02D251B16352900FAC191 /* contact */ = {
 			isa = PBXGroup;
 			children = (
+				13C02D6B1B163DF100FAC191 /* Contact.h */,
+				13C02D6C1B163DF100FAC191 /* Contact.m */,
 				13C02D5D1B1638B300FAC191 /* ContactChangeDelegate.h */,
 				13C02D591B1637CB00FAC191 /* contactCategories */,
-				13C02D561B1637BD00FAC191 /* Contact.h */,
-				13C02D571B1637BD00FAC191 /* Contact.m */,
 				13C02D511B1636E500FAC191 /* Main.storyboard */,
 				13C02D2A1B16352900FAC191 /* AppDelegate.h */,
 				13C02D2B1B16352900FAC191 /* AppDelegate.m */,
@@ -263,11 +263,11 @@
 				13C02D601B1639D000FAC191 /* EditController.m in Sources */,
 				13C02D2C1B16352900FAC191 /* AppDelegate.m in Sources */,
 				13C02D2F1B16352900FAC191 /* contact.xcdatamodeld in Sources */,
-				13C02D581B1637BD00FAC191 /* Contact.m in Sources */,
 				13C02D671B163ADE00FAC191 /* Contact+Additions.m in Sources */,
 				13C02D5C1B16381B00FAC191 /* Contact+Validation.m in Sources */,
 				13C02D321B16352900FAC191 /* ViewController.m in Sources */,
 				13C02D291B16352900FAC191 /* main.m in Sources */,
+				13C02D6D1B163DF100FAC191 /* Contact.m in Sources */,
 				13C02D6A1B163B8E00FAC191 /* ContactsTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -18,7 +18,4 @@
 @property (nonatomic, retain) NSString * phoneNumber;
 @property (nonatomic, retain) NSString * email;
 
-@property (readonly) NSString* fullName;
-
-+(id) contactWithFirstName:(NSString*) firstName andLastName:(NSString*) lastName;
 @end

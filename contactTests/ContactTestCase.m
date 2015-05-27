@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import "Contact.h"
+#import "Contact+Additions.h"
 
 @interface ContactTestCase : XCTestCase
 

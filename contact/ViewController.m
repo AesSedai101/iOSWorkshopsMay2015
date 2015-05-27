@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "EditController.h"
+#import "Contact+Additions.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *fullName;
