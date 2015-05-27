@@ -11,10 +11,15 @@
 		13C02D2C1B16352900FAC191 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13C02D2B1B16352900FAC191 /* AppDelegate.m */; };
 		13C02D2F1B16352900FAC191 /* contact.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 13C02D2D1B16352900FAC191 /* contact.xcdatamodeld */; };
 		13C02D321B16352900FAC191 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13C02D311B16352900FAC191 /* ViewController.m */; };
-		13C02D351B16352900FAC191 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13C02D331B16352900FAC191 /* Main.storyboard */; };
 		13C02D371B16352900FAC191 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13C02D361B16352900FAC191 /* Images.xcassets */; };
 		13C02D3A1B16352900FAC191 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13C02D381B16352900FAC191 /* LaunchScreen.xib */; };
-		13C02D461B16352A00FAC191 /* contactTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 13C02D451B16352A00FAC191 /* contactTests.m */; };
+		13C02D521B1636E500FAC191 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13C02D511B1636E500FAC191 /* Main.storyboard */; };
+		13C02D581B1637BD00FAC191 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 13C02D571B1637BD00FAC191 /* Contact.m */; };
+		13C02D5C1B16381B00FAC191 /* Contact+Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = 13C02D5B1B16381B00FAC191 /* Contact+Validation.m */; };
+		13C02D601B1639D000FAC191 /* EditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13C02D5F1B1639D000FAC191 /* EditController.m */; };
+		13C02D621B163AA200FAC191 /* ContactInitialiserAdditionsTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 13C02D611B163AA200FAC191 /* ContactInitialiserAdditionsTestCase.m */; };
+		13C02D641B163AA800FAC191 /* ContactTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 13C02D631B163AA800FAC191 /* ContactTestCase.m */; };
+		13C02D671B163ADE00FAC191 /* Contact+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 13C02D661B163ADE00FAC191 /* Contact+Additions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,12 +41,22 @@
 		13C02D2E1B16352900FAC191 /* contact.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = contact.xcdatamodel; sourceTree = "<group>"; };
 		13C02D301B16352900FAC191 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		13C02D311B16352900FAC191 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		13C02D341B16352900FAC191 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		13C02D361B16352900FAC191 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		13C02D391B16352900FAC191 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		13C02D3F1B16352A00FAC191 /* contactTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = contactTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		13C02D441B16352A00FAC191 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		13C02D451B16352A00FAC191 /* contactTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = contactTests.m; sourceTree = "<group>"; };
+		13C02D511B1636E500FAC191 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		13C02D561B1637BD00FAC191 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
+		13C02D571B1637BD00FAC191 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
+		13C02D5A1B16381B00FAC191 /* Contact+Validation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Contact+Validation.h"; sourceTree = "<group>"; };
+		13C02D5B1B16381B00FAC191 /* Contact+Validation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Contact+Validation.m"; sourceTree = "<group>"; };
+		13C02D5D1B1638B300FAC191 /* ContactChangeDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactChangeDelegate.h; sourceTree = "<group>"; };
+		13C02D5E1B1639D000FAC191 /* EditController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditController.h; sourceTree = "<group>"; };
+		13C02D5F1B1639D000FAC191 /* EditController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditController.m; sourceTree = "<group>"; };
+		13C02D611B163AA200FAC191 /* ContactInitialiserAdditionsTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactInitialiserAdditionsTestCase.m; sourceTree = "<group>"; };
+		13C02D631B163AA800FAC191 /* ContactTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactTestCase.m; sourceTree = "<group>"; };
+		13C02D651B163ADE00FAC191 /* Contact+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Contact+Additions.h"; sourceTree = "<group>"; };
+		13C02D661B163ADE00FAC191 /* Contact+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Contact+Additions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,11 +98,17 @@
 		13C02D251B16352900FAC191 /* contact */ = {
 			isa = PBXGroup;
 			children = (
+				13C02D5D1B1638B300FAC191 /* ContactChangeDelegate.h */,
+				13C02D591B1637CB00FAC191 /* contactCategories */,
+				13C02D561B1637BD00FAC191 /* Contact.h */,
+				13C02D571B1637BD00FAC191 /* Contact.m */,
+				13C02D511B1636E500FAC191 /* Main.storyboard */,
 				13C02D2A1B16352900FAC191 /* AppDelegate.h */,
 				13C02D2B1B16352900FAC191 /* AppDelegate.m */,
 				13C02D301B16352900FAC191 /* ViewController.h */,
 				13C02D311B16352900FAC191 /* ViewController.m */,
-				13C02D331B16352900FAC191 /* Main.storyboard */,
+				13C02D5E1B1639D000FAC191 /* EditController.h */,
+				13C02D5F1B1639D000FAC191 /* EditController.m */,
 				13C02D361B16352900FAC191 /* Images.xcassets */,
 				13C02D381B16352900FAC191 /* LaunchScreen.xib */,
 				13C02D2D1B16352900FAC191 /* contact.xcdatamodeld */,
@@ -108,7 +129,8 @@
 		13C02D421B16352A00FAC191 /* contactTests */ = {
 			isa = PBXGroup;
 			children = (
-				13C02D451B16352A00FAC191 /* contactTests.m */,
+				13C02D631B163AA800FAC191 /* ContactTestCase.m */,
+				13C02D611B163AA200FAC191 /* ContactInitialiserAdditionsTestCase.m */,
 				13C02D431B16352A00FAC191 /* Supporting Files */,
 			);
 			path = contactTests;
@@ -120,6 +142,17 @@
 				13C02D441B16352A00FAC191 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		13C02D591B1637CB00FAC191 /* contactCategories */ = {
+			isa = PBXGroup;
+			children = (
+				13C02D5A1B16381B00FAC191 /* Contact+Validation.h */,
+				13C02D5B1B16381B00FAC191 /* Contact+Validation.m */,
+				13C02D651B163ADE00FAC191 /* Contact+Additions.h */,
+				13C02D661B163ADE00FAC191 /* Contact+Additions.m */,
+			);
+			name = contactCategories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,7 +235,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13C02D351B16352900FAC191 /* Main.storyboard in Resources */,
+				13C02D521B1636E500FAC191 /* Main.storyboard in Resources */,
 				13C02D3A1B16352900FAC191 /* LaunchScreen.xib in Resources */,
 				13C02D371B16352900FAC191 /* Images.xcassets in Resources */,
 			);
@@ -222,8 +255,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13C02D601B1639D000FAC191 /* EditController.m in Sources */,
 				13C02D2C1B16352900FAC191 /* AppDelegate.m in Sources */,
 				13C02D2F1B16352900FAC191 /* contact.xcdatamodeld in Sources */,
+				13C02D581B1637BD00FAC191 /* Contact.m in Sources */,
+				13C02D671B163ADE00FAC191 /* Contact+Additions.m in Sources */,
+				13C02D5C1B16381B00FAC191 /* Contact+Validation.m in Sources */,
 				13C02D321B16352900FAC191 /* ViewController.m in Sources */,
 				13C02D291B16352900FAC191 /* main.m in Sources */,
 			);
@@ -233,7 +270,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13C02D461B16352A00FAC191 /* contactTests.m in Sources */,
+				13C02D641B163AA800FAC191 /* ContactTestCase.m in Sources */,
+				13C02D621B163AA200FAC191 /* ContactInitialiserAdditionsTestCase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,14 +286,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		13C02D331B16352900FAC191 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				13C02D341B16352900FAC191 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		13C02D381B16352900FAC191 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -420,6 +450,7 @@
 				13C02D4B1B16352A00FAC191 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		13C02D4C1B16352A00FAC191 /* Build configuration list for PBXNativeTarget "contactTests" */ = {
 			isa = XCConfigurationList;
@@ -428,6 +459,7 @@
 				13C02D4E1B16352A00FAC191 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

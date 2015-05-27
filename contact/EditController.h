@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  EditController.h
 //  contact
 //
 //  Created by Elsabe Ros on 2015/05/27.
@@ -7,13 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ContactChangeDelegate.h"
 #import "Contact+Validation.h"
+#import "ContactChangeDelegate.h"
 
-@interface ViewController : UIViewController <ContactChangeDelegate>
-
+@interface EditController : UIViewController
 @property Contact* contact;
 @property (weak, nonatomic) id <ContactChangeDelegate> delegate;
-
 @end
-
