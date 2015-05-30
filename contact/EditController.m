@@ -32,6 +32,30 @@
     self.editPhone.text = self.contact.phoneNumber;
     self.editEmail.text = self.contact.email;
 }
+- (IBAction)firstNameChanged:(id)sender {
+    self.contact.firstName = [sender text];
+    [self.delegate contactChanged];
+}
+- (IBAction)lastNameChanged:(id)sender {
+    self.contact.lastName = [sender text];
+    [self.delegate contactChanged];
+}
+- (IBAction)dobChanged:(id)sender {
+    NSString* dateString = [sender text];
+    NSDateFormatter* format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"dd LLLL yyyy"];
+    NSDate* date = [format dateFromString:dateString];
+    self.contact.birthDate = date;
+    [self.delegate contactChanged];
+}
+- (IBAction)phoneChanged:(id)sender {
+    self.contact.phoneNumber = [sender text];
+    [self.delegate contactChanged];
+}
+- (IBAction)emailChanged:(id)sender {
+    self.contact.email = [sender text];
+    [self.delegate contactChanged];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

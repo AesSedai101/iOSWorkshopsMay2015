@@ -14,6 +14,7 @@
 @interface ContactsTableViewController ()
 @property NSMutableArray* contacts;
 @property NSArray* alphabet;
+@property (nonatomic,retain) NSManagedObjectContext* context;
 @end
 
 @implementation ContactsTableViewController 
@@ -23,19 +24,25 @@
     
     self.alphabet = @[@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"I",@"J",@"K",@"L",@"M",@"N",@"O",@"P",@"Q",@"R",@"S",@"T",@"U",@"V",@"W",@"X",@"Y",@"Z"];
     
-    AppDelegate *app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext* context = [app managedObjectContext];
+    if (self.context == nil) {
+        AppDelegate *app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        self.context = [app managedObjectContext];
+    }
     
-    Contact* zippy = [NSEntityDescription insertNewObjectForEntityForName:@"Contact" inManagedObjectContext:context];
+    Contact* zippy = [NSEntityDescription insertNewObjectForEntityForName:@"Contact" inManagedObjectContext:self.context];
     zippy.firstName = @"Zippy";
     zippy.lastName = @"Z";
     zippy.email = @"zippy@z.z.";
     zippy.phoneNumber = @"012 345 6789";
     zippy.birthDate = [[NSDate alloc] initWithTimeIntervalSince1970:50000];
-    [context save:nil];
+    [self.context save:nil];
     
+    [self loadAndSortContacts];
+}
+
+-(void) loadAndSortContacts {
     NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"Contact"];
-    NSArray* myItems = [context executeFetchRequest:request error:nil];
+    NSArray* myItems = [self.context executeFetchRequest:request error:nil];
     self.contacts = [NSMutableArray arrayWithArray: myItems];
     
     [self.contacts sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
@@ -127,6 +134,7 @@
 }
 
 - (void)contactChanged {
+    [self loadAndSortContacts];
     [self.tableView reloadData];
 }
 

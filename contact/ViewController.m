@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "EditController.h"
 #import "Contact+Additions.h"
+#import "AppDelegate.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *fullName;
@@ -47,6 +48,9 @@
 }
 
 - (void)contactChanged {
+    NSManagedObjectContext* context = [(AppDelegate*)[[UIApplication sharedApplication] delegate] managedObjectContext];
+    [context save:nil];
+    
     [self updateUI];
     [self.delegate contactChanged];
 }
