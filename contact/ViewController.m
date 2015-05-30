@@ -48,9 +48,6 @@
 }
 
 - (void)contactChanged {
-    NSManagedObjectContext* context = [(AppDelegate*)[[UIApplication sharedApplication] delegate] managedObjectContext];
-    [context save:nil];
-    
     [self updateUI];
     [self.delegate contactChanged];
 }

@@ -7,6 +7,7 @@
 //
 
 #import "EditController.h"
+#import "AppDelegate.h"
 
 @interface EditController ()
 @property (weak, nonatomic) IBOutlet UITextField *editFirstName;
@@ -46,6 +47,9 @@
 
     self.contact.phoneNumber = self.editPhone.text;
     self.contact.email = self.editEmail.text;
+    
+    NSManagedObjectContext* context = [(AppDelegate*)[[UIApplication sharedApplication] delegate] managedObjectContext];
+    [context save:nil];
     
     [self.delegate contactChanged];
     [self.navigationController popViewControllerAnimated:YES];

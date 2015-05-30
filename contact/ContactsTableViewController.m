@@ -10,6 +10,7 @@
 #import "Contact+Additions.h"
 #import "ViewController.h"
 #import "AppDelegate.h"
+#import "EditController.h"
 
 @interface ContactsTableViewController ()
 @property NSMutableArray* contacts;
@@ -28,14 +29,6 @@
         AppDelegate *app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
         self.context = [app managedObjectContext];
     }
-    
-    Contact* zippy = [NSEntityDescription insertNewObjectForEntityForName:@"Contact" inManagedObjectContext:self.context];
-    zippy.firstName = @"Zippy";
-    zippy.lastName = @"Z";
-    zippy.email = @"zippy@z.z.";
-    zippy.phoneNumber = @"012 345 6789";
-    zippy.birthDate = [[NSDate alloc] initWithTimeIntervalSince1970:50000];
-    [self.context save:nil];
     
     [self loadAndSortContacts];
 }
@@ -124,13 +117,22 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    NSIndexPath* indexPath = [self.tableView indexPathForSelectedRow];
-    NSInteger index = [self calculateSectionStart:indexPath.section] + indexPath.row;
-    Contact* selected = [self.contacts objectAtIndex:index];
+    if ([segue.identifier isEqualToString:@"showSegue"]) {
+        NSIndexPath* indexPath = [self.tableView indexPathForSelectedRow];
+        NSInteger index = [self calculateSectionStart:indexPath.section] + indexPath.row;
+        Contact* selected = [self.contacts objectAtIndex:index];
     
-    ViewController* controller = [segue destinationViewController];
-    controller.contact = selected;
-    controller.delegate = self;
+        ViewController* controller = [segue destinationViewController];
+        controller.contact = selected;
+        controller.delegate = self;
+    }
+    
+    if ([segue.identifier isEqualToString:@"addSegue"]) {
+        EditController* controller = [segue destinationViewController];
+        controller.contact = [NSEntityDescription insertNewObjectForEntityForName:@"Contact" inManagedObjectContext:self.context];
+        controller.delegate = self;
+    }
+    
 }
 
 - (void)contactChanged {
