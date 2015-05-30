@@ -24,17 +24,19 @@
     self.alphabet = @[@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"I",@"J",@"K",@"L",@"M",@"N",@"O",@"P",@"Q",@"R",@"S",@"T",@"U",@"V",@"W",@"X",@"Y",@"Z"];
     
     AppDelegate *app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext* context = [app managedObjectContext];
     
-    NSEntityDescription* descr = @"Contact";
-    Contact* zippy = [[Contact alloc] initWithEntity:descr insertIntoManagedObjectContext:[app managedObjectContext]];
-                      
+    Contact* zippy = [NSEntityDescription insertNewObjectForEntityForName:@"Contact" inManagedObjectContext:context];
     zippy.firstName = @"Zippy";
     zippy.lastName = @"Z";
     zippy.email = @"zippy@z.z.";
     zippy.phoneNumber = @"012 345 6789";
     zippy.birthDate = [[NSDate alloc] initWithTimeIntervalSince1970:50000];
+    [context save:nil];
     
-    self.contacts = [NSMutableArray arrayWithArray: @[zippy]];
+    NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"Contact"];
+    NSArray* myItems = [context executeFetchRequest:request error:nil];
+    self.contacts = [NSMutableArray arrayWithArray: myItems];
     
     [self.contacts sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
         Contact* c1 = obj1;
