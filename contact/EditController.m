@@ -27,14 +27,28 @@
     NSDateFormatter* format = [[NSDateFormatter alloc] init];
     [format setDateFormat:@"dd LLLL yyyy"];
     
-    self.editFirstName.text = self.contact.firstName;
-    self.editLastName.text = self.contact.lastName;
-    self.editDateOfBirth.text = [format stringFromDate:self.contact.birthDate];
-    self.editPhone.text = self.contact.phoneNumber;
-    self.editEmail.text = self.contact.email;
+    if (self.contact != nil) {
+        self.editFirstName.text = self.contact.firstName;
+        self.editLastName.text = self.contact.lastName;
+        self.editDateOfBirth.text = [format stringFromDate:self.contact.birthDate];
+        self.editPhone.text = self.contact.phoneNumber;
+        self.editEmail.text = self.contact.email;
+    } else {
+        NSString* blank = @"";
+        self.editFirstName.text = blank;
+        self.editLastName.text = blank;
+        self.editDateOfBirth.text = blank;
+        self.editPhone.text = blank;
+        self.editEmail.text = blank;
+    }
 }
 
 - (IBAction)onSave:(id)sender {
+    NSManagedObjectContext* context = [(AppDelegate*)[[UIApplication sharedApplication] delegate] managedObjectContext];
+    
+    if (self.contact == nil) {
+        self.contact = [NSEntityDescription insertNewObjectForEntityForName:@"Contact" inManagedObjectContext:context];
+    }
     
     self.contact.firstName = self.editFirstName.text;
     self.contact.lastName = self.editLastName.text;
@@ -48,7 +62,6 @@
     self.contact.phoneNumber = self.editPhone.text;
     self.contact.email = self.editEmail.text;
     
-    NSManagedObjectContext* context = [(AppDelegate*)[[UIApplication sharedApplication] delegate] managedObjectContext];
     [context save:nil];
     
     [self.delegate contactChanged];

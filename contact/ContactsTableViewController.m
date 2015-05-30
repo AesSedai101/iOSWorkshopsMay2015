@@ -129,7 +129,6 @@
     
     if ([segue.identifier isEqualToString:@"addSegue"]) {
         EditController* controller = [segue destinationViewController];
-        controller.contact = [NSEntityDescription insertNewObjectForEntityForName:@"Contact" inManagedObjectContext:self.context];
         controller.delegate = self;
     }
     
