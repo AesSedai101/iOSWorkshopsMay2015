@@ -112,20 +112,21 @@
     }
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription
-                                   entityForName:@"Contact" inManagedObjectContext:self.context];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Contact" inManagedObjectContext:self.context];
     [fetchRequest setEntity:entity];
     
     NSSortDescriptor *sort = [[NSSortDescriptor alloc]
-                              initWithKey:@"lastName" ascending:NO];
+                              initWithKey:@"lastName"
+                              ascending:YES
+                              selector:@selector(localizedCaseInsensitiveCompare:)];
     [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
-    
     [fetchRequest setFetchBatchSize:20];
     
     NSFetchedResultsController *theFetchedResultsController =
     [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                        managedObjectContext:self.context sectionNameKeyPath:nil
-                                                   cacheName:@"Root"];
+                                        managedObjectContext:self.context
+                                        sectionNameKeyPath:@"sectionKey"
+                                        cacheName:@"Root"];
     self.fetchedResultsController = theFetchedResultsController;
     _fetchedResultsController.delegate = self;
     

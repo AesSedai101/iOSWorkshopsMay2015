@@ -20,4 +20,8 @@
     return descr;
 }
 
+- (NSString*) sectionKey {
+    return [[self.lastName uppercaseString] substringToIndex:1];
+}
+
 @end

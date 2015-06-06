@@ -10,4 +10,5 @@
 
 @interface Contact (Additions)
 @property (readonly) NSString* fullName;
+@property (readonly) NSString* sectionKey;
 @end
