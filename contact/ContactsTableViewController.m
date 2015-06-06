@@ -13,9 +13,8 @@
 #import "EditController.h"
 
 @interface ContactsTableViewController ()
-@property NSMutableArray* contacts;
-@property NSArray* alphabet;
 @property (nonatomic,retain) NSManagedObjectContext* context;
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @end
 
 @implementation ContactsTableViewController 
@@ -23,89 +22,59 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.alphabet = @[@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"I",@"J",@"K",@"L",@"M",@"N",@"O",@"P",@"Q",@"R",@"S",@"T",@"U",@"V",@"W",@"X",@"Y",@"Z"];
-    
     if (self.context == nil) {
         AppDelegate *app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
         self.context = [app managedObjectContext];
     }
     
-    [self loadAndSortContacts];
+    NSError *error;
+    if (![[self fetchedResultsController] performFetch:&error]) {
+        // Update to handle the error appropriately.
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        exit(-1);  // Fail
+    }
 }
 
--(void) loadAndSortContacts {
-    NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"Contact"];
-    NSArray* myItems = [self.context executeFetchRequest:request error:nil];
-    self.contacts = [NSMutableArray arrayWithArray: myItems];
-    
-    [self.contacts sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-        Contact* c1 = obj1;
-        Contact* c2 = obj2;
-        NSComparisonResult result = [c1.lastName.uppercaseString compare:c2.lastName.uppercaseString];
-        if (NSOrderedSame == result) {
-            return [c1.firstName.uppercaseString compare:c2.firstName.uppercaseString];
-        }
-        return result;
-    }];
-    NSLog(@"Sorted list %@", self.contacts);
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+-(void) viewDidUnload {
+    [super viewDidUnload];
+    self.fetchedResultsController = nil;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 26;
+    return [[self.fetchedResultsController sections] count];
 }
 
 -(NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
-    return self.alphabet;
+    return [self.fetchedResultsController sectionIndexTitles];
 }
 
 - (NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [self.alphabet objectAtIndex:section];
+    id sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
+    return [sectionInfo name];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSInteger count = 0;
-    NSString* letterString = [self.alphabet objectAtIndex:section];
-    unichar letter = [letterString characterAtIndex:0];
-    
-    for (Contact* contact in self.contacts) {
-        if ([contact.lastName.uppercaseString characterAtIndex:0] == letter) {
-            count++;
-        }
-    }
-    NSLog(@"Counting strings in section %@ (%tu): %tu",letterString, section, count);
-    return count;
+    id sectionInfo =[[self.fetchedResultsController sections] objectAtIndex:section];
+    return [sectionInfo numberOfObjects];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"contactCell" forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"contactCell";
     
-    NSInteger calcIndex = indexPath.row + [self calculateSectionStart:indexPath.section];
-    
-    // Configure the cell...
-    Contact * thisContact = [self.contacts objectAtIndex:calcIndex];
-    NSLog(@"Contact %ld in section %@: %@", (long)indexPath.row, [self.alphabet objectAtIndex:indexPath.section], thisContact.fullName);
-    cell.textLabel.text = thisContact.fullName;
+    UITableViewCell *cell =
+    [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    [self configureCell:cell atIndexPath:indexPath];
     
     return cell;
-}
-
-- (NSInteger) calculateSectionStart:(NSInteger) sectionIndex {
-    NSString* section = [self.alphabet objectAtIndex:sectionIndex];
-    NSInteger sectionStart = 0;
-    for (Contact* c in self.contacts) {
-        if ([c.lastName.uppercaseString compare:section] == NSOrderedAscending) {
-            sectionStart++;
-        }
-    }
-    return sectionStart;
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -119,9 +88,7 @@
     
     if ([segue.identifier isEqualToString:@"showSegue"]) {
         NSIndexPath* indexPath = [self.tableView indexPathForSelectedRow];
-        NSInteger index = [self calculateSectionStart:indexPath.section] + indexPath.row;
-        Contact* selected = [self.contacts objectAtIndex:index];
-    
+        Contact* selected = [_fetchedResultsController objectAtIndexPath:indexPath];
         ViewController* controller = [segue destinationViewController];
         controller.contact = selected;
         controller.delegate = self;
@@ -135,9 +102,90 @@
 }
 
 - (void)contactChanged {
-    [self loadAndSortContacts];
     [self.tableView reloadData];
 }
 
+- (NSFetchedResultsController *)fetchedResultsController {
+    
+    if (_fetchedResultsController != nil) {
+        return _fetchedResultsController;
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription
+                                   entityForName:@"Contact" inManagedObjectContext:self.context];
+    [fetchRequest setEntity:entity];
+    
+    NSSortDescriptor *sort = [[NSSortDescriptor alloc]
+                              initWithKey:@"lastName" ascending:NO];
+    [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
+    
+    [fetchRequest setFetchBatchSize:20];
+    
+    NSFetchedResultsController *theFetchedResultsController =
+    [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                        managedObjectContext:self.context sectionNameKeyPath:nil
+                                                   cacheName:@"Root"];
+    self.fetchedResultsController = theFetchedResultsController;
+    _fetchedResultsController.delegate = self;
+    
+    return _fetchedResultsController;
+}
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    // The fetch controller is about to start sending change notifications, so prepare the table view for updates.
+    [self.tableView beginUpdates];
+}
+
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    Contact *info = [_fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = info.fullName;
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+    
+    UITableView *tableView = self.tableView;
+    
+    switch(type) {
+            
+        case NSFetchedResultsChangeInsert:
+            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeUpdate:
+            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+            [tableView deleteRowsAtIndexPaths:[NSArray
+                                               arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertRowsAtIndexPaths:[NSArray
+                                               arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id )sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+    switch(type) {
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    // The fetch controller has sent all current change notifications, so tell the table view to process all updates.
+    [self.tableView endUpdates];
+}
 
 @end
