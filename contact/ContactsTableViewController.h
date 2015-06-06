@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
-#import "ContactChangeDelegate.h"
 
-@interface ContactsTableViewController : UITableViewController <ContactChangeDelegate,NSFetchedResultsControllerDelegate>
+@interface ContactsTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 
 @end

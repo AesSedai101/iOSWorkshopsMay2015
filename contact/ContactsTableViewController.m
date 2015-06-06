@@ -91,18 +91,12 @@
         Contact* selected = [_fetchedResultsController objectAtIndexPath:indexPath];
         ViewController* controller = [segue destinationViewController];
         controller.contact = selected;
-        controller.delegate = self;
     }
     
     if ([segue.identifier isEqualToString:@"addSegue"]) {
         EditController* controller = [segue destinationViewController];
-        controller.delegate = self;
     }
     
-}
-
-- (void)contactChanged {
-    [self.tableView reloadData];
 }
 
 - (NSFetchedResultsController *)fetchedResultsController {
