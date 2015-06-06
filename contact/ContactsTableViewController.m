@@ -33,6 +33,8 @@
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         exit(-1);  // Fail
     }
+    
+    self.tableView.allowsMultipleSelectionDuringEditing = NO;
 }
 
 
@@ -44,6 +46,23 @@
 -(void) viewDidUnload {
     [super viewDidUnload];
     self.fetchedResultsController = nil;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return YES if you want the specified item to be editable.
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.context deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
+        
+        NSError *error = nil;
+        if (![self.context save:&error]) {
+            NSLog(@"Unresolved error %@", error);
+        }
+    }
 }
 
 #pragma mark - Table view data source
